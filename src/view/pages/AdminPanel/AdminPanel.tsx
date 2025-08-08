@@ -1,5 +1,5 @@
 import { useEffect, useState} from "react";
-import { getAllProducts } from "../../../slices/productsSlice.ts";
+import { getAllProducts } from "../../../slices/productSlice.ts";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../../store/store.ts";
 import { getAllCategories } from "../../../slices/categorySlice.ts";

@@ -2,7 +2,7 @@ import { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../../store/store.ts";
-import { deleteProduct, getAllProducts } from "../../../slices/productsSlice.ts";
+import { deleteProduct, getAllProducts } from "../../../slices/productSlice.ts";
 import { getAllCategories } from "../../../slices/categorySlice.ts";
 
 export function ManageProducts() {
@@ -139,7 +139,7 @@ export function ManageProducts() {
                 {filteredProducts.map((product) => (
                     <div
                         key={product.id}
-                        className="w-50 h-auto mr-2 mb-2 justify-center items-center border-gray-500 border-[1px] p-4 rounded shadow-md bg-white hover:shadow-2xl transition-shadow duration-300"
+                        className="w-70 h-auto mr-2 mb-2 justify-center items-center border-gray-500 border-[1px] p-4 rounded shadow-md bg-white hover:shadow-2xl transition-shadow duration-300"
                     >
                         {product.image && (
                             <img

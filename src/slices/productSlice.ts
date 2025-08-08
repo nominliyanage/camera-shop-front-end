@@ -88,7 +88,7 @@ const productSlice = createSlice({
                 }
             });
         builder
-            .addCase(addProduct.fulfilled, (state: ProductState, action:any) => {
+            .addCase(deleteProduct.fulfilled, (state: ProductState, action:any) => {
                 state.list = state.list.filter((product) => product.id !== action.meta.arg);
             });
     }

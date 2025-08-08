@@ -62,7 +62,7 @@ export function Login() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+        <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-red-400 via-red-400 to-red-400">
             <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
                     Sign In

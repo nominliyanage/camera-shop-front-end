@@ -7,5 +7,5 @@ export interface ProductData {
     description: string;
     category: string;
 
-    filter(param: (product) => boolean): string;
+    filter(param: (product : ProductData) => boolean): string;
 }

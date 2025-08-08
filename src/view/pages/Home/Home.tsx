@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Product} from "../../common/Product/Product.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../../store/store.ts";
-import {getAllProducts} from "../../../slices/productsSlice.ts";
+import {getAllProducts} from "../../../slices/productSlice.ts";
 import {getUserFromToken} from "../../../auth/auth.ts";
 import {fetchCart} from "../../../slices/cartSlice.ts";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, updateProduct, deleteProduct, getAllProducts } from "../../../slices/productsSlice.ts";
+import { addProduct, updateProduct, deleteProduct, getAllProducts } from "../../../slices/productSlice.ts";
 import { getAllCategories } from "../../../slices/categorySlice";
 import type { AppDispatch, RootState } from "../../../store/store";
 
@@ -25,7 +25,7 @@ export function AddProducts() {
     const [formData, setFormData] = useState<productData>({
         name: "",
         price: 0,
-        currency: "USD",
+        currency: "LKR",
         category: "",
         description: "",
         image: "",
@@ -57,11 +57,11 @@ export function AddProducts() {
             // setIsUploading(true); // Start the upload process
             const timestamp = Math.round(new Date().getTime() / 1000);
             try {
-                const response = await fetch("https://localhost:3000/api/cloudinary/signature", {
+                const response = await fetch("http://localhost:3000/api/cloudinary/signature", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({timestamp}),
-                    });
+                });
 
                 if (!response.ok) {
                     throw new Error("Failed to fetch cloudinary signature");

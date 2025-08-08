@@ -1,0 +1,16 @@
+/* Ensure the layout spans the full viewport height */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* Ensures the main content takes up available space */
+}

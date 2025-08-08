@@ -16,7 +16,6 @@ function App() {
         const token = localStorage.getItem("token");
         if (!token || isTokenExpired(token)) {
             localStorage.removeItem("token");
-            localStorage.removeItem("refreshToken");
             navigate("/login");
         }
     }, [navigate]);

@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import productReducer from './productsSlice.ts';
+import productReducer from './productSlice.ts';
 import cartReducer from './cartSlice.ts';
 import userReducer from './userSlice.ts';
 import contactReducer from './contactSlice.ts';
