@@ -6,7 +6,7 @@ export const backendApi = axios.create({
 
 backendApi.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token"); // Always get latest from local storage
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }

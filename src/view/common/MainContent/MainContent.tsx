@@ -6,8 +6,15 @@ import {Contact} from "../../pages/Contact/Contact.tsx";
 import {ShoppingCart} from "../../pages/ShoppingCart/ShoppingCart.tsx";
 import {ProtectedRoute} from "../../../auth/ProtectedRoute.tsx";
 import {AdminPanel} from "../../pages/AdminPanel/AdminPanel.tsx";
-import {ManageProducts} from "../../pages/ManageProducts/ManageProducts.tsx";
+import {AddProducts} from "../../pages/AddProducts/AddProducts.tsx";
 import {useEffect, useState} from "react";
+import {ManageCategory} from "../../pages/ManageCategory/ManageCategory.tsx";
+import {ManageProducts} from "../../pages/ManageProducts/ManageProducts.tsx";
+import {AddCategory} from "../../pages/AddCategory/AddCategory.tsx";
+import {Register} from "../../pages/Register/Register.tsx";
+import {AccountSettings} from "../../pages/AccountSettings/AccountSettings.tsx";
+import Users from "../../pages/UserManagement/Users.tsx";
+import Payments from "../../pages/Payment/Payment.tsx";
 
 export function MainContent() {
     const [role, setRole] = useState<string | null>(null);
@@ -18,30 +25,73 @@ export function MainContent() {
     }, []);
 
     return (
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="flex min-h-screen flex-col bg-[#f0f0f0]">
             <Routes>
+                {/* Register route is always accessible */}
+                <Route path="/register" element={<Register />} />
+                <Route path="/account-settings" element={<AccountSettings />} />
                 {/* Routes visible to non-admins only */}
                 {role === 'customer' && (
                     <>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="/about" element={<About/>}/>
-                        <Route path="/contact" element={<Contact/>}/>
-                        <Route path="/shopping-cart" element={<ShoppingCart/>}/>
+
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/shopping-cart" element={<ShoppingCart />} />
+                        <Route path="/payment/addPayment" element={
+                            <ProtectedRoute allowedRoles={['customer']}>
+                                <ShoppingCart />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/payment" element={
+                            <ProtectedRoute allowedRoles={['customer']}>
+                                <ShoppingCart />
+                            </ProtectedRoute>
+                        } />
                     </>
                 )}
+
+                {/* Admin routes */}
                 <>
                     <Route path="/admin-panel" element={
                         <ProtectedRoute allowedRoles={['admin']}>
-                            <AdminPanel/>
+                            <AdminPanel />
                         </ProtectedRoute>
-                    }/>
+                    } />
+                    <Route path="/add-product" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <AddProducts />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/add-category" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <AddCategory />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/manage-category" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <ManageCategory />
+                        </ProtectedRoute>
+                    } />
                     <Route path="/manage-products" element={
                         <ProtectedRoute allowedRoles={['admin']}>
-                            <ManageProducts/>
+                            <ManageProducts />
                         </ProtectedRoute>
-                    }/>
+                    } />
+                    <Route path="/users" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <Users />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/payments" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <Payments />
+                        </ProtectedRoute>
+                    } />
                 </>
             </Routes>
         </div>
     );
 }
+
+export default MainContent;
